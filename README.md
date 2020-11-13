@@ -49,6 +49,7 @@ sample(1:10, size = 11, replace = F)
  ## Simulation studies. 
  ### During simulations, it is a good idea to set a seed once at the beginning. 
 ##Examples. 
+library(ggplot2)
 set.seed(500)
 runif(5)
 runif(3)
