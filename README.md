@@ -70,26 +70,46 @@ runif(10)
 
 
 mu<-15
+
 sigma<-7
+
 n<-2500
+
 n.sim<-1200
+
 alpha<-0.05
 
+
+
 F.MakeCI <- function(x, alpha, sigma){
-  x.bar <- mean(x)
-  se <- sigma/sqrt(length(x))
-  z.alpha2 <- qnorm(1-alpha/2)
-  CI <- c(x.bar - z.alpha2 * se, x.bar + z.alpha2 * se)
-  return(CI)
+
+x.bar <- mean(x)
+
+se <- sigma/sqrt(length(x))
+
+z.alpha2 <- qnorm(1-alpha/2)
+
+CI <- c(x.bar - z.alpha2 * se, x.bar + z.alpha2 * se)
+
+return(CI)
+
 }
+
 
 set.seed(200000)
 
+
+
 CIs <- matrix(NA, n.sim, 2)
+
 for (i in 1:n.sim){
-  X <- rnorm(n, mu, sigma)
-  CIs[i, ] <- F.MakeCI(X, alpha, sigma)
+
+X <- rnorm(n, mu, sigma)
+
+CIs[i, ] <- F.MakeCI(X, alpha, sigma)
+
 }
+
 
 sum((mu > CIs[,1]) & (mu < CIs[,2]))/n.sim
 
