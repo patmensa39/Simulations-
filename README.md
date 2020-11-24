@@ -184,14 +184,10 @@ all.error <- vapply(X.data, F.error, c(err=0), mu=mu)
 probs[i] <- sum(all.error >= epsilon)/n.sim
 
 }
+library(tidyverse)
+qplot(all.n, probs, geom = "line")
 
 
-
-pdf("Plot-WLLN.pdf", width=8, height=8)
-
-qplot(all.n, probs, geom="line") + xlab("Sample size") + ylab("probability")
-
-dev.off()
 
 
 
