@@ -165,8 +165,6 @@ return(abs(mean(X)-mu))
 
 set.seed(39883)
 
-
-
 probs <- numeric(length(all.n))
 
 for (i in seq_along(all.n)){
@@ -183,7 +181,7 @@ all.error <- vapply(X.data, F.error, c(err=0), mu=mu)
 
 
 
-probs[i] <- sum(all.error > epsilon)/n.sim
+probs[i] <- sum(all.error >= epsilon)/n.sim
 
 }
 
